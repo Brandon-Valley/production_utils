@@ -51,7 +51,11 @@ def get_app_id_of__file__(file_obj):
 #     os.system(cmd)
 
 #     cmd = "C:\\projects\\version_control_scripts\\CE\\sms\\production_utils\\write_app_id_to_file__run_silent.lnk.lnk"
-    cmd = 'cscript "C:\\projects\\version_control_scripts\\CE\\sms\\production_utils\\write_app_id_to_file__run_silent__NO_ARGS_TEST.vbs"'
+
+    cmd = 'powershell.exe -nologo -command set-executionpolicy remotesigned'
+    subprocess.call(cmd, shell = False)
+    
+    cmd = 'powershell.exe -nologo -command C:\\projects\\version_control_scripts\\CE\\sms\\production_utils\\write_app_id_to_file.ps1 C:\\projects\\version_control_scripts\\CE\\sms\\production_utils\\app_ids.txt'
     subprocess.call(cmd, shell = False)
 #     subprocess.Popen(cmd, shell = False)
 #     os.system(cmd)
